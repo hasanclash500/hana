@@ -11,8 +11,10 @@ export const metadata: Metadata = {
   alternates: { canonical: "/finder" },
 };
 
-type Search = { gender?: string; family?: string; note?: string; budget?: string };
-function first(value: string | undefined, limit: number) { return (value ?? "").slice(0, limit).trim(); }
+type Search = { gender?: string | string[]; family?: string | string[]; note?: string | string[]; budget?: string | string[] };
+function first(value: string | string[] | undefined, limit: number) {
+  return (typeof value === "string" ? value : "").slice(0, limit).trim();
+}
 function parsePreferences(search: Search): FinderPreferences {
   const genderValue = first(search.gender, 20);
   const gender = genderValue === "women" || genderValue === "men" || genderValue === "unisex" ? genderValue : "";
