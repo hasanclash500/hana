@@ -5,15 +5,15 @@ import { BottomNav } from "@/components/bottom-nav";
 import "./globals.css";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+const indexable = process.env.HANA_ALLOW_INDEXING === "true";
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: { default: "گالری عطر حنا | دنیایی از رایحه", template: "%s | گالری عطر حنا" },
   description: "گالری عطر حنا؛ فضایی برای کشف، شناخت و انتخاب آگاهانه عطر و رایحه.",
   openGraph: { type: "website", locale: "fa_IR", siteName: "HANA PERFUME" },
   alternates: { canonical: "/" },
-  robots: { index: true, follow: true },
+  robots: { index: indexable, follow: indexable },
 };
-
 export default function RootLayout({ children }: { children: ReactNode }) {
   return <html lang="fa" dir="rtl"><body>
     <SiteHeader />

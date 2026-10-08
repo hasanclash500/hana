@@ -1,24 +1,27 @@
 # HANA PERFUME | گالری عطر حنا
 
-A Persian RTL, mobile-first fragrance catalog and editorial prototype.
+Persian RTL, mobile-first perfume catalog and educational platform. **Development prototype — not a functioning store.**
 
-**Phase 1 only:** No checkout, live payments, fictional prices, or unauthenticated administrative writes.
+## Current technologies
+- Next.js 15 + React 19 + TypeScript
+- Optional Convex free-tier data source through a provider-neutral catalog interface
+- GitHub for source and CI, Vercel for noncommercial development and preview
+- Optional Docker image for future migration to a private server
 
-## Stack
-- Next.js 15 / React 19 / TypeScript
-- Convex for optional **development** catalog data, accessed through a replaceable repository interface
-- GitHub for version control, Vercel for noncommercial testing only
-- Future self-hosted deployment supported by design
-
-## Start
+## Run locally
 ```sh
 npm install
 cp .env.example .env.local
 npm run dev
 ```
 
-Pages: `/`, `/perfumes`, `/perfumes/[slug]`, `/notes`, `/magazine`, `/api/v1/health`, `/robots.txt`, `/sitemap.xml`.
+Browse http://localhost:3000 . Pages: `/`, `/perfumes`, `/perfumes/[slug]`, `/notes`, `/magazine`. The product catalog stays empty until genuine product records are published through a secure workflow.
 
-The public catalog intentionally stays empty until real records are published in Convex. Read `docs/DEPLOYMENT.md` and `docs/ARCHITECTURE.md` for the self-hosted migration approach and setup notes.
+## Deployment
+See [deployment](docs/DEPLOYMENT.md), [self-hosted migration](docs/SELF_HOSTED.md), [architecture](docs/ARCHITECTURE.md), [security](docs/SECURITY.md).
+Dev and previews default to **noindex** (enable only after launching the verified production domain with `HANA_ALLOW_INDEXING=true`).
+No checkouts, payment collection, customer records, or unauthenticated product writes are implemented yet.
 
-> Never commit credentials, tokens, deploy keys, or real customer data. Vercel Hobby is for personal/noncommercial development, not operating the commercial store.
+GitHub: https://github.com/hasanclash500/hana
+
+Use Vercel Hobby only for personal and noncommercial testing, not operating an online sales business.
