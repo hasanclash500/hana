@@ -11,11 +11,21 @@ export class ConvexCatalogRepository implements CatalogRepository {
   async listPublished(): Promise<Perfume[]> {
     const client = this.getClient();
     if (!client) return []; // No imaginary catalog data.
-    return await client.query(anyApi.catalog.listPublished, {}) as Perfume[];
+    try {
+      return await client.query(anyApi.catalog.listPublished, {}) as Perfume[];
+    } catch (error) {
+      console.error("HANA: Convex catalog is not ready. Deploy the matching backend functions.", error);
+      return [];
+    }
   }
   async findPublishedBySlug(slug: string): Promise<Perfume | null> {
     const client = this.getClient();
     if (!client) return null;
-    return await client.query(anyApi.catalog.bySlug, { slug }) as Perfume | null;
+    try {
+      return await client.query(anyApi.catalog.bySlug, { slug }) as Perfume | null;
+    } catch (error) {
+      console.error("HANA: Convex product lookup failed.", error);
+      return null;
+    }
   }
 }
