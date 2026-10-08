@@ -1,0 +1,47 @@
+name: HANA public preview smoke test
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/smoke.yml"
+      - "src/**"
+      - "convex/**"
+      - "next.config.ts"
+      - "package.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      SITE_URL: https://hana-delta-eight.vercel.app
+    steps:
+      - name: Check homepage and key pages
+        shell: bash
+        run: |
+          set -euo pipefail
+          for path in / /perfumes /notes /magazine; do
+            echo "Checking ${SITE_URL}${path}"
+            curl --silent --show-error --location --fail               --max-time 20 --retry 5 --retry-delay 3 --retry-all-errors               "${SITE_URL}${path}" -o /tmp/hana-page.html
+            if ! grep -q '<html' /tmp/hana-page.html; then
+              echo "Expected HTML from ${path}; got different content"
+              exit 1
+            fi
+          done
+      - name: Check API health response
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --silent --show-error --location --fail             --max-time 20 --retry 5 --retry-delay 3 --retry-all-errors             "${SITE_URL}/api/v1/health" -o /tmp/hana-health.json
+          jq -e '.status == "ok" and .service == "hana"' /tmp/hana-health.json
+      - name: Check robots route
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --silent --show-error --location --fail             --max-time 20 --retry 5 --retry-delay 3 --retry-all-errors             "${SITE_URL}/robots.txt" -o /tmp/hana-robots.txt
+          grep -qi 'User-agent' /tmp/hana-robots.txt
