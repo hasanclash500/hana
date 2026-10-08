@@ -15,7 +15,10 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Browse http://localhost:3000 . Pages: `/`, `/perfumes`, `/perfumes/[slug]`, `/notes`, `/magazine`. The product catalog stays empty until genuine product records are published through a secure workflow.
+Browse http://localhost:3000 . Pages: `/`, `/perfumes`, `/perfumes/[slug]`, `/finder`, `/notes`, `/magazine`. The product catalog stays empty until genuine product records are published through a secure workflow.
+
+## Scent finder
+The [`/finder`](https://hana-delta-eight.vercel.app/finder) questionnaire matches real published products to selected gender, fragrance family, notes and in-stock prices. It never invents products or percentages. See [finder details](docs/FINDER.md).
 
 ## Deployment
 See [deployment](docs/DEPLOYMENT.md), [self-hosted migration](docs/SELF_HOSTED.md), [architecture](docs/ARCHITECTURE.md), [security](docs/SECURITY.md).

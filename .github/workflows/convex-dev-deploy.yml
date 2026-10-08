@@ -30,6 +30,11 @@ jobs:
             echo "::error::Set the CONVEX_DEV_DEPLOY_KEY repository secret for the HANA development deployment. Do not use a production deploy key."
             exit 1
           fi
+          # A production key must never be accepted by this dev-only workflow.
+          if [[ "$CONVEX_DEPLOY_KEY" != dev:energetic-butterfly-143\|* ]]; then
+            echo "::error::The key must belong to the energetic-butterfly-143 development deployment. Do not use a prod or preview key."
+            exit 1
+          fi
       - name: Publish schema and public read queries to Convex
         env:
           # This MUST be a deploy key scoped to energetic-butterfly-143 (development).

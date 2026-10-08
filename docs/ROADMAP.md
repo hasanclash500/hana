@@ -7,11 +7,14 @@
 - [x] GitHub Actions checks (typecheck, unit tests and build)
 - [x] Dockerfile and self-hosting guide
 - [x] Preview SEO indexing disabled by default
+- [x] Rule-based perfume finder from actual catalog fields with 6 tests
 
 ## Next: free-first development environment
-- [ ] Import `hasanclash500/hana` as `hana` in the correct Vercel account workspace; deployment must remain non-commercial testing only
-- [ ] Confirm the initial deployment reaches `READY` and smoke-test `/`, `/perfumes`, `/notes`, `/magazine`, `/api/v1/health`
-- [ ] Create a development Convex instance and set `NEXT_PUBLIC_CONVEX_URL` only in Vercel/local environment settings
+- [x] Connect `hasanclash500/hana` to Vercel project `hana` for noncommercial testing
+- [x] Verify Vercel deployment `READY` and GitHub CI passing
+- [ ] Verify latest merged `/finder` release smoke test
+- [x] Configure supplied Convex Cloud/HTTP Actions public URLs in Vercel (no secrets)
+- [ ] Publish Convex functions after securely adding scoped `CONVEX_DEV_DEPLOY_KEY`; first workflow run failed at missing-key check
 - [ ] Import verified real product data through a secured management process, with no fabricated prices or stock
 - [ ] Add an authenticated administrator panel and permissions before enabling mutations
 
