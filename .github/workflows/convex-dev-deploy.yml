@@ -1,0 +1,37 @@
+name: Deploy HANA Convex development backend
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy-development:
+    # Never deploy from pull requests or a fork.
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout reviewed main branch
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: "22"
+      - name: Install dependencies
+        run: npm install --ignore-scripts --no-audit --no-fund
+      - name: Validate development deployment key is configured
+        env:
+          CONVEX_DEPLOY_KEY: ${{ secrets.CONVEX_DEV_DEPLOY_KEY }}
+        run: |
+          if [ -z "$CONVEX_DEPLOY_KEY" ]; then
+            echo "::error::Set the CONVEX_DEV_DEPLOY_KEY repository secret for the HANA development deployment. Do not use a production deploy key."
+            exit 1
+          fi
+      - name: Publish schema and public read queries to Convex
+        env:
+          # This MUST be a deploy key scoped to energetic-butterfly-143 (development).
+          CONVEX_DEPLOY_KEY: ${{ secrets.CONVEX_DEV_DEPLOY_KEY }}
+        run: npx --no-install convex deploy
