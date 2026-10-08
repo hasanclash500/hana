@@ -13,3 +13,28 @@ a{text-decoration:none;color:inherit}button,input{font:inherit}button{cursor:poi
 @media(max-width:900px){.container{padding-inline:20px}.hero-grid{grid-template-columns:1fr 1fr}.hero-stage{min-height:480px}.perfume-bottle{transform:scale(.78) rotate(-7deg)}.discovery-grid{grid-template-columns:repeat(2,1fr)}.discovery-card:last-child{grid-column:span 2}.product-grid{grid-template-columns:repeat(2,1fr)}.note-grid{grid-template-columns:repeat(2,1fr)}.detail-grid{gap:25px}.detail-visual{min-height:420px}}
 @media(max-width:650px){body{padding-bottom:68px}.container{padding-inline:20px}.site-header{height:70px}.brand-mark__words strong{font-size:24px}.brand-mark__symbol{font-size:26px}.brand-mark__words small{font-size:8px}.desktop-nav{display:none}.header-discover{font-size:11px;padding:6px 10px}.bottom-nav{position:fixed;bottom:0;inset-inline:0;height:68px;display:flex;z-index:20;background:#fffcf6;border-top:1px solid #dcd3c4;box-shadow:0 -3px 20px #0000000b;padding-bottom:env(safe-area-inset-bottom);align-items:center;justify-content:space-around}.bottom-nav a{font-size:19px;min-height:52px;min-width:60px;display:flex;flex-direction:column;align-items:center;line-height:1.2;justify-content:center;color:#294f44}.bottom-nav small{font-size:10px;margin-top:5px}.hero{min-height:auto}.hero-grid{grid-template-columns:1fr;gap:0;min-height:0}.hero-content{padding:60px 0 8px}.hero h1{font-size:52px;line-height:1.43}.hero-summary{max-width:340px;font-size:13px;line-height:2.1}.hero-actions{gap:20px}.hero-stage{min-height:355px}.perfume-bottle{transform:scale(.7) rotate(-7deg);margin-top:-75px;margin-bottom:-60px}.hero-stage__halo{inset:0 10% 20px}.stage-caption{bottom:16px}.hero-bottom{font-size:8px;padding-bottom:20px}.intro-band__inner{min-height:85px;gap:15px}.intro-band p{font-size:13px;text-align:center}.section{padding-block:65px}.section-heading{display:block}.section-heading p{margin:6px 0}.section-heading h2{font-size:29px}.section-action{display:inline-block;margin-top:14px}.discovery-grid{grid-template-columns:1fr;gap:14px}.discovery-card{min-height:240px;padding:25px}.discovery-card:last-child{grid-column:auto}.discovery-card h3{margin-top:27px;font-size:24px}.discovery-card p{max-width:290px}.product-grid{gap:10px}.product-card__visual{height:175px}.product-card__copy{padding:12px}.product-card__copy h3{font-size:14px}.product-card__copy small{font-size:10px}.product-card__details span{font-size:9px}.product-card__copy strong{font-size:11px}.quote-panel{padding:55px 0}.quote-panel blockquote{font-size:18px}.footer-inner{min-height:135px}.footer-inner>p{display:none}.listing-page{padding-block:45px 80px}.page-intro h1{font-size:33px}.page-intro p{font-size:13px}.search-control button{padding:10px 15px}.results-heading h2{font-size:14px}.note-grid{grid-template-columns:1fr}.note-card{min-height:240px}.magazine-article{grid-template-columns:55px 1fr;gap:10px;padding:28px 0}.magazine-article__no{font-size:27px}.magazine-article h2{font-size:19px}.magazine-article p{font-size:12px}.detail-grid{grid-template-columns:1fr}.detail-visual{min-height:320px}.detail-visual>span{font-size:125px}.detail-copy h1{font-size:31px}.variant-row{flex-wrap:wrap}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+
+/* HANA scent finder */
+.finder-form{background:#fffdf7;border:1px solid var(--line);padding:30px;margin:28px 0 55px;box-shadow:var(--shadow)}
+.finder-form__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.finder-form__grid label{display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:700}
+.finder-form__grid input,.finder-form__grid select{width:100%;background:#fff;border:1px solid #cac3b4;padding:12px 15px;border-radius:5px;font-size:14px;min-height:48px;color:var(--ink)}
+.finder-form__actions{display:flex;align-items:center;flex-wrap:wrap;gap:25px;margin-top:28px}
+.finder-hint{font-size:12px;color:#6b776f;margin:24px 0 0}
+.finder-results{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.finder-result{min-width:0;background:#fffdf7;border:1px solid var(--line)}
+.finder-result .product-card{border:0;border-bottom:1px solid var(--line);border-radius:0}
+.finder-result__reasons{padding:18px;font-size:12px}
+.finder-result__reasons strong{color:#235143}
+.finder-result__reasons ul{padding-right:22px;margin:10px 0 0;line-height:2}
+.finder-placeholder{text-align:center;border:1px dashed #c2b49a;padding:58px 22px;background:#f2ebdd}
+.finder-placeholder>span{font-size:52px;color:#b89460}
+.finder-placeholder h2{font-size:23px}
+.finder-placeholder p{color:#66756d;font-size:13px}
+@media(max-width:900px){.finder-results{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.finder-form{padding:18px}.finder-form__grid,.finder-results{grid-template-columns:1fr}}
+
+.finder-promo{display:flex;align-items:center;justify-content:space-between;gap:24px;background:#eee1c7;padding-block:42px;margin-top:32px;border-radius:6px}
+.finder-promo h2{font-size:clamp(22px,3vw,34px);margin:8px 0}.finder-promo p{font-size:13px;color:#54645b;max-width:600px}
+@media(max-width:650px){.finder-promo{flex-direction:column;align-items:flex-start;padding-block:32px}}

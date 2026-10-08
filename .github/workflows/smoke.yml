@@ -25,7 +25,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          for path in / /perfumes /notes /magazine; do
+          for path in / /perfumes /finder /notes /magazine; do
             echo "Checking ${SITE_URL}${path}"
             curl --silent --show-error --location --fail               --max-time 20 --retry 5 --retry-delay 3 --retry-all-errors               "${SITE_URL}${path}" -o /tmp/hana-page.html
             if ! grep -q '<html' /tmp/hana-page.html; then

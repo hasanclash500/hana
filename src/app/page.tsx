@@ -35,6 +35,13 @@ export default async function HomePage() {
       </div>
     </section>
 
+    <section className="finder-promo container" aria-labelledby="finder-promo-title">
+      <div><span className="section-label">PERSONAL FRAGRANCE DISCOVERY</span>
+      <h2 id="finder-promo-title">عطر مناسب سلیقه‌ات را پیدا کن</h2>
+      <p>نت محبوب، خانواده بویایی و بودجه‌ات را انتخاب کن؛ نتیجه فقط از میان عطرهای واقعی گالری است.</p></div>
+      <Link href="/finder" className="button button--dark">شروع انتخاب عطر ↖</Link>
+    </section>
+
     <section className="section container" aria-labelledby="products-title">
       <div className="section-heading"><div><span className="section-label">THE COLLECTION</span><h2 id="products-title">از گالری حنا</h2></div><Link className="section-action" href="/perfumes">نمایش همه عطرها ←</Link></div>
       {featured.length ? <div className="product-grid">{featured.map(product => <ProductCard key={product.id} product={product} />)}</div> : <div className="collection-empty"><span aria-hidden="true">✦</span><h3>گالری در حال آماده‌سازی است</h3><p>محصولات پس از ثبت و انتشار توسط مدیر فروشگاه در این بخش نمایش داده می‌شوند.</p><Link href="/notes" className="text-link">فعلاً دنیای نت‌ها را بشناسید ←</Link></div>}
